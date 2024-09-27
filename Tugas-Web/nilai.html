@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghitung Nilai Akhir Mahasiswa</title>
+    <link rel="stylesheet" href="stylesnilai.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Menghitung Nilai Akhir Mahasiswa</h2>
+            <form id="nilaiForm">
+                <label for="nim">NIM :</label>
+                <input type="text" id="nim" name="nim" value="1482300085"><br>
+
+                <label for="nama">Nama Mahasiswa :</label>
+                <input type="text" id="nama" name="nama" value="Donny Pratama"><br>
+
+                <label for="tugas">Tugas :</label>
+                <input type="number" id="tugas" name="tugas" value="90"><br>
+
+                <label for="quiz">Quiz :</label>
+                <input type="number" id="quiz" name="quiz" value="95"><br>
+
+                <label for="uts">UTS :</label>
+                <input type="number" id="uts" name="uts" value="90"><br>
+
+                <label for="uas">UAS :</label>
+                <input type="number" id="uas" name="uas" value="95"><br>
+
+                <label for="nilaiAkhir">Nilai Akhir :</label>
+                <input type="number" id="nilaiAkhir" name="nilaiAkhir" value="93" disabled><br>
+
+                <label for="grade">Grade :</label>
+                <input type="text" id="grade" name="grade" value="A" disabled><br>
+
+                <button type="button" onclick="hitungNilai()">Proses</button>
+            </form>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>NIM</th>
+                        <th>Nama</th>
+                        <th>Tugas</th>
+                        <th>Quiz</th>
+                        <th>UTS</th>
+                        <th>UAS</th>
+                        <th>Nilai Akhir</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>Donny</td>
+                        <td>90</td>
+                        <td>85</td>
+                        <td>75</td>
+                        <td>80</td>
+                        <td>80</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Naya</td>
+                        <td>85</td>
+                        <td>75</td>
+                        <td>60</td>
+                        <td>70</td>
+                        <td>72</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>Alok</td>
+                        <td>90</td>
+                        <td>70</td>
+                        <td>80</td>
+                        <td>85</td>
+                        <td>81</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>004</td>
+                        <td>Cantikva</td>
+                        <td>90</td>
+                        <td>80</td>
+                        <td>75</td>
+                        <td>70</td>
+                        <td>77</td>
+                        <td>C</td>
+                    </tr>
+                    <tr>
+                        <td>005</td>
+                        <td>Sandy</td>
+                        <td>80</td>
+                        <td>85</td>
+                        <td>70</td>
+                        <td>85</td>
+                        <td>80</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>004</td>
+                        <td>Husni</td>
+                        <td>90</td>
+                        <td>80</td>
+                        <td>75</td>
+                        <td>70</td>
+                        <td>77</td>
+                        <td>C</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Grade Information Section -->
+            <div class="grade-info">
+                <p><b>Nilai akhir</b> = (0.2*Tugas) + (0.2*Quiz) + (0.3*UTS) + (0.3*UAS)</p>
+                <p>
+                    A – NA &gt; 85 <br>
+                    B – NA &gt; 70 <br>
+                    C – NA &gt; 60 <br>
+                    D – NA &gt; 40 <br>
+                    E – NA &gt; 30 <br>
+                    F – NA &gt; 0
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script for calculating final score -->
+    <script>
+        function hitungNilai() {
+            const tugas = parseFloat(document.getElementById("tugas").value);
+            const quiz = parseFloat(document.getElementById("quiz").value);
+            const uts = parseFloat(document.getElementById("uts").value);
+            const uas = parseFloat(document.getElementById("uas").value);
+
+            const nilaiAkhir = (0.2 * tugas) + (0.2 * quiz) + (0.3 * uts) + (0.3 * uas);
+            document.getElementById("nilaiAkhir").value = nilaiAkhir.toFixed(2);
+
+            let grade;
+            if (nilaiAkhir > 85) {
+                grade = 'A';
+            } else if (nilaiAkhir > 70) {
+                grade = 'B';
+            } else if (nilaiAkhir > 60) {
+                grade = 'C';
+            } else if (nilaiAkhir > 40) {
+                grade = 'D';
+            } else if (nilaiAkhir > 30) {
+                grade = 'E';
+            } else {
+                grade = 'F';
+            }
+
+            document.getElementById("grade").value = grade;
+        }
+    </script>
+</body>
+</html>
+
